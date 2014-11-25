@@ -1,0 +1,1 @@
+'use strict';window.ECS = {};window.Board = {};ECS.Components = {};ECS.Systems = {};ECS.Assemblages = {};ECS.$canvas = document.getElementById('tetrisCanvas');ECS.context = ECS.$canvas.getContext('2d');
