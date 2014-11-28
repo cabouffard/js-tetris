@@ -1,30 +1,19 @@
 'use strict';
 
-var systems = [];
-var entities = {};
+addNewTetrimino(true);
 
-var entity = new ECS.Assemblages.ITetromino();
-entities[entity.id] = entity;
-
-ECS.Entities = entities;
-
-systems = [
+ECS.Systems = [
+  ECS.Systems.randomizer,
+  ECS.Systems.collision,
   ECS.Systems.gravity,
   ECS.Systems.userInput,
-  ECS.Systems.collision,
-  ECS.Systems.render
+  ECS.Systems.render,
+  ECS.Systems.gameState
 ];
 
-Board.verticalSquares = 10;
-Board.horizontalSquares = 20;
-Board.width = ECS.$canvas.width;
-Board.height = ECS.$canvas.height;
-Board.unitWidth = Board.width / Board.verticalSquares;
-Board.unitHeight = Board.height / Board.horizontalSquares;
-
 function gameLoop() {
-  for (var i=0, len=systems.length; i < len; i++) {
-    systems[i](ECS.Entities);
+  for (var i = 0, len = ECS.Systems.length; i < len; i++) {
+    ECS.Systems[i](ECS.Entities);
   }
 
   if (self.running !== false) {

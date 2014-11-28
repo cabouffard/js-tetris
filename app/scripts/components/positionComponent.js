@@ -2,8 +2,8 @@
 
 ECS.Components.Position = function PositionComponent (x, y) {
   // Default values
-  x = x || 4;
-  y = y || 1;
+  x = x || 3;
+  y = y || 0;
 
   this.x = x;
   this.y = y;

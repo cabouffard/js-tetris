@@ -4,24 +4,9 @@ var userInput = {
   x: 0,
   y: 0,
   clockwise: false,
-  counterClockwise: false
+  counterClockwise: false,
+  hardDrop: false
 };
-
-function edgeCases(entity) {
-  if (entity.components.position.x > 10) {
-    entity.components.position.x = 10;
-  }
-  else if (entity.components.position.x < 1) {
-    entity.components.position.x = 1;
-  }
-
-  if (entity.components.position.y > 20) {
-    entity.components.position.y = 20;
-  }
-  else if (entity.components.position.y < 1) {
-    entity.components.position.y = 1;
-  }
-}
 
 function keyDownHandler(event) {
   switch (event.keyCode) {
@@ -29,9 +14,9 @@ function keyDownHandler(event) {
     case 37:
       userInput.x -= 1;
       break;
-    // up
+    // up, hard-drop
     case 38:
-      userInput.y -= 1;
+      userInput.hardDrop = true;
       break;
     // right
     case 39:
@@ -67,7 +52,7 @@ ECS.Systems.userInput = function userInputSystem (entities) {
     if (entity.components.playerControlled && entity.components.position) {
       entity.components.position.x += userInput.x;
       entity.components.position.y += userInput.y;
-      edgeCases(entity);
+
       if (entity.components.shape) {
         if (userInput.clockwise) {
           entity.components.shape.rotateClockwise();
@@ -76,11 +61,17 @@ ECS.Systems.userInput = function userInputSystem (entities) {
           entity.components.shape.rotateCounterclockwise();
         }
       }
+      if (entity.components.gravity) {
+        if (userInput.hardDrop) {
+          entity.components.gravity.hardDrop();
+        }
+      }
     }
   }
   userInput.x = 0;
   userInput.y = 0;
   userInput.clockwise = false;
   userInput.counterClockwise = false;
+  userInput.hardDrop = false;
 };
 

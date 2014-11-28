@@ -20,37 +20,42 @@ ECS.Components.Shape = function ShapeComponent (tetrimino) {
       break;
     case ECS.Components.Shape.prototype.tetrominoes.J:
       this.tetrimino = [
-        [true,false,false],
-        [true,true,true],
-        [false,false,false]
+        [true,false,false,false],
+        [true,true,true,false],
+        [false,false,false,false],
+        [false,false,false,false]
           ];
       break;
     case ECS.Components.Shape.prototype.tetrominoes.L:
       this.tetrimino = [
-        [false,false,true],
-        [true,true,true],
-        [false,false,false]
+        [false,false,true,false],
+        [true,true,true,false],
+        [false,false,false,false]
+        [false,false,false,false]
           ];
       break;
     case ECS.Components.Shape.prototype.tetrominoes.S:
       this.tetrimino = [
-        [false,true,true],
-        [true,true,false],
-        [false,false,false]
+        [false,true,true,false],
+        [true,true,false,false],
+        [false,false,false,false]
+        [false,false,false,false]
           ];
       break;
     case ECS.Components.Shape.prototype.tetrominoes.T:
       this.tetrimino = [
-        [false,true,false],
-        [true,true,true],
-        [false,false,false]
+        [false,true,false,false],
+        [true,true,true,false],
+        [false,false,false,false]
+        [false,false,false,false]
           ];
       break;
     case ECS.Components.Shape.prototype.tetrominoes.Z:
       this.tetrimino = [
-        [true,true,false],
-        [false,true,true],
-        [false,false,false]
+        [true,true,false,false],
+        [false,true,true,false],
+        [false,false,false,false]
+        [false,false,false,false]
           ];
       break;
   }
@@ -91,15 +96,14 @@ ECS.Components.Shape.prototype.tetrominoes = {
   T: 6,
   Z: 7,
   properties: {
-    1: {value: 1, code: "I"},
-    2: {value: 2, code: "J"},
-    3: {value: 3, code: "L"},
-    4: {value: 4, code: "O"},
-    5: {value: 5, code: "S"},
-    6: {value: 6, code: "T"},
-    7: {value: 7, code: "Z"}
+    1: {value: 1, percent: "I"},
+    2: {value: 2, percent: "J"},
+    3: {value: 3, percent: "L"},
+    4: {value: 4, percent: "O"},
+    5: {value: 5, percent: "S"},
+    6: {value: 6, percent: "T"},
+    7: {value: 7, percent: "Z"}
   }
 };
-
 
 ECS.Components.Shape.prototype.name = 'shape';
