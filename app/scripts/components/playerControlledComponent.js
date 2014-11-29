@@ -1,8 +1,11 @@
 'use strict';
 
-ECS.Components.PlayerControlled = function PlayerControlledComponent() {
+var Game = Game || {};
+
+Game.ECS.Components.PlayerControlled = function PlayerControlledComponent() {
   this.pc = true;
+
   return this;
 };
 
-ECS.Components.PlayerControlled.prototype.name = 'playerControlled';
+Game.ECS.Components.PlayerControlled.prototype.name = 'playerControlled';

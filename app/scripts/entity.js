@@ -1,5 +1,7 @@
 'use strict';
 
+var Game = Game || {};
+
 // Source: http://stackoverflow.com/a/8809472
 function generateUUID(){
     var d = Date.now();
@@ -9,27 +11,27 @@ function generateUUID(){
         return (c=='x' ? r : (r&0x3|0x8)).toString(16);
     });
     return uuid;
-}
+};
 
-ECS.Entity = function Entity() {
+Game.ECS.Entity = function Entity() {
   this.id = generateUUID();
   this.components = {};
 
-  ECS.Entity.prototype._count;
-  ECS.Entity.prototype._count++;
+  // Game.ECS.Entity.prototype._count;
+  Game.ECS.Entity.prototype._count++;
 
   return this;
 };
 
-ECS.Entity.prototype._count = 0;
+Game.ECS.Entity.prototype._count = 0;
 
-ECS.Entity.prototype.addComponent = function addComponent(component) {
+Game.ECS.Entity.prototype.addComponent = function addComponent(component) {
   this.components[component.name] = component;
   return this;
-}
+};
 
 // We can pass either a string or a component to the function
-ECS.Entity.prototype.removeComponent = function removeComponent(component) {
+Game.ECS.Entity.prototype.removeComponent = function removeComponent(component) {
   var name = component;
 
   if (typeof name === 'function') {
@@ -39,9 +41,10 @@ ECS.Entity.prototype.removeComponent = function removeComponent(component) {
   delete this.components[name];
 
   return this;
-}
+};
 
-ECS.Entity.prototype.print = function print () {
+Game.ECS.Entity.prototype.print = function print () {
   console.log(JSON.stringify(this, null, 2));
   return this;
-}
+};
+

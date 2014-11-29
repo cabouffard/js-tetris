@@ -1,1 +1,1 @@
-'use strict';window.ECS = {};window.Board = {};ECS.Entities = {};ECS.Components = {};ECS.Systems = [];ECS.Assemblages = {};ECS.$canvas = document.getElementById('tetrisCanvas');ECS.context = ECS.$canvas.getContext('2d');Board.verticalSquares = 10;Board.horizontalSquares = 20;Board.width = ECS.$canvas.width;Board.height = ECS.$canvas.height;Board.unitWidth = Board.width / Board.verticalSquares;Board.unitHeight = Board.height / Board.horizontalSquares;
+// to remove

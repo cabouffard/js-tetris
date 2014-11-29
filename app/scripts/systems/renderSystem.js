@@ -1,76 +1,77 @@
 'use strict';
 
+var Game = Game || {};
+
 function drawShape(entity, posX, posY) {
-  ECS.context.fillStyle = entity.components.color.shape;
-  ECS.context.fillRect(
-      (entity.components.position.x + posY) * Board.unitWidth,
-      (entity.components.position.y + posX)  * Board.unitHeight,
-      Board.unitWidth,
-      Board.unitHeight
+  Game.context.fillStyle = entity.components.color.shape;
+  Game.context.fillRect(
+      (entity.components.position.x + posY) * Game.Board.unitWidth,
+      (entity.components.position.y + posX)  * Game.Board.unitHeight,
+      Game.Board.unitWidth,
+      Game.Board.unitHeight
       );
 
-  ECS.context.fillStyle = entity.components.color.insideBorder;
-  ECS.context.fillRect(
-      (entity.components.position.x + posY) * Board.unitWidth + 2,
-      (entity.components.position.y + posX) * Board.unitHeight + 2,
-      Board.unitWidth - 4,
-      Board.unitHeight - 4
+  Game.context.fillStyle = entity.components.color.insideBorder;
+  Game.context.fillRect(
+      (entity.components.position.x + posY) * Game.Board.unitWidth + 2,
+      (entity.components.position.y + posX) * Game.Board.unitHeight + 2,
+      Game.Board.unitWidth - 4,
+      Game.Board.unitHeight - 4
       );
 
-  ECS.context.fillStyle = entity.components.color.inside;
-  ECS.context.fillRect(
-      (entity.components.position.x + posY) * Board.unitWidth + 4,
-      (entity.components.position.y + posX) * Board.unitHeight + 4,
-      Board.unitWidth - 8,
-      Board.unitHeight - 8
+  Game.context.fillStyle = entity.components.color.inside;
+  Game.context.fillRect(
+      (entity.components.position.x + posY) * Game.Board.unitWidth + 4,
+      (entity.components.position.y + posX) * Game.Board.unitHeight + 4,
+      Game.Board.unitWidth - 8,
+      Game.Board.unitHeight - 8
       );
-};
+}
 
-function debugShowingCollision() {
-  var entity, fillStyle;
-
-  ECS.context.fillStyle = 'rgb(255,0,0,0.25)';
-  for (var i = 0; i < Board.verticalSquares; i++) {
-    for (var j = 0; j < Board.horizontalSquares; j++) {
-      if (ECS.collisionBoard[i][j]) {
-        ECS.context.fillRect(
-            (i) * Board.unitWidth,
-            (j) * Board.unitHeight,
-            Board.unitWidth,
-            Board.unitHeight
-            );
-      }
-    }
-  }
-};
+// function debugShowingCollision() {
+//
+//   Game.ECS.context.fillStyle = 'rgb(255,0,0,0.25)';
+//   for (var i = 0; i < Game.Board.verticalSquares; i++) {
+//     for (var j = 0; j < Game.Board.horizontalSquares; j++) {
+//       if (Game.ECS.collisionGame.Board[i][j]) {
+//         Game.ECS.context.fillRect(
+//             (i) * Game.Board.unitWidth,
+//             (j) * Game.Board.unitHeight,
+//             Game.Board.unitWidth,
+//             Game.Board.unitHeight
+//             );
+//       }
+//     }
+//   }
+// }
 
 function drawGrid(){
-  for (var x = 0.5; x < ECS.$canvas.width; x += Board.unitWidth) {
-    ECS.context.moveTo(x, 0);
-    ECS.context.lineTo(x, ECS.$canvas.height);
+  for (var x = 0.5; x < Game.$canvas.width; x += Game.Board.unitWidth) {
+    Game.context.moveTo(x, 0);
+    Game.context.lineTo(x, Game.$canvas.height);
   }
 
-  for (var y = 0.5; y < ECS.$canvas.height; y += Board.unitHeight) {
-    ECS.context.moveTo(0, y);
-    ECS.context.lineTo(ECS.$canvas.width, y);
+  for (var y = 0.5; y < Game.$canvas.height; y += Game.Board.unitHeight) {
+    Game.context.moveTo(0, y);
+    Game.context.lineTo(Game.$canvas.width, y);
   }
 
-  ECS.context.strokeStyle = '#ddd';
-  ECS.context.stroke();
+  Game.context.strokeStyle = '#ddd';
+  Game.context.stroke();
 }
 
 function clearCanvas () {
-    ECS.context.save();
+    Game.context.save();
 
-    ECS.context.setTransform(1, 0, 0, 1, 0, 0);
-    ECS.context.clearRect(0, 0, ECS.$canvas.width, ECS.$canvas.height);
+    Game.context.setTransform(1, 0, 0, 1, 0, 0);
+    Game.context.clearRect(0, 0, Game.$canvas.width, Game.$canvas.height);
 
-    ECS.context.restore();
+    Game.context.restore();
 
     drawGrid();
 }
 
-ECS.Systems.render = function renderSystem (entities) {
+Game.ECS.Systems.render = function renderSystem (entities) {
   clearCanvas();
 
   var entity;

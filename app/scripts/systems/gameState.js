@@ -1,12 +1,14 @@
 'use strict';
 
-ECS.Systems.gameState = function gameState (entities) {
-  for (var x = 0; x < Board.verticalSquares; x++) {
-    if (ECS.collisionBoard[0][x]) {
-      console.log ("game done!");
-      ECS.$canvas.style.borderColor = "red";
+var Game = Game || {};
 
-      self.running = false;
+Game.ECS.Systems.gameState = function gameState () {
+  for (var x = 0; x < Game.Board.verticalSquares; x++) {
+    if (Game.ECS.collisionBoard[0][x]) {
+      console.log ('game done!');
+      Game.$canvas.style.borderColor = 'red';
+
+      Game.paused = true;
     }
   }
 };

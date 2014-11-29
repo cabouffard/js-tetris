@@ -1,5 +1,7 @@
 'use strict';
 
+var Game = Game || {};
+
 var userInput = {
   x: 0,
   y: 0,
@@ -34,15 +36,19 @@ function keyDownHandler(event) {
     case 78:
       userInput.counterClockwise = true;
       break;
+    // p
+    case 80:
+      Game.pause();
+      break;
     default:
       console.log('Key not handled: ' + event.keyCode);
       break;
   }
 }
 
-ECS.$canvas.addEventListener('keydown', keyDownHandler, false);
+Game.$canvas.addEventListener('keydown', keyDownHandler, false);
 
-ECS.Systems.userInput = function userInputSystem (entities) {
+Game.ECS.Systems.userInput = function userInputSystem (entities) {
 
   var entity;
 
@@ -50,7 +56,7 @@ ECS.Systems.userInput = function userInputSystem (entities) {
     entity = entities[entityId];
 
     if (entity.components.playerControlled && entity.components.position) {
-      entity.components.position.x += userInput.x;
+      entity.components.position.xVelocity += userInput.x;
       entity.components.position.y += userInput.y;
 
       if (entity.components.shape) {

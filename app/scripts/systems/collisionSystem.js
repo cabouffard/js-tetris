@@ -1,37 +1,36 @@
 'use strict';
 
-// ECS.collisionBoard = [];
-ECS.collisionBoard = function initBoard() {
+var Game = Game || {};
+
+Game.ECS.collisionBoard = [];
+(function initBoard() {
   // Y by X
-  var array = new Array(Board.horizontalSquares);
-  for (var i = 0; i < Board.horizontalSquares; i++) {
-    array[i] = new Array(Board.verticalSquares);
+  var array = new Array(Game.Board.horizontalSquares);
+  for (var i = 0; i < Game.Board.horizontalSquares; i++) {
+    array[i] = new Array(Game.Board.verticalSquares);
     // TODO: fix this, this is fugly
-    for (var j = 0; j < Board.verticalSquares; j++) {
+    for (var j = 0; j < Game.Board.verticalSquares; j++) {
       array[i][j] = false;
     }
   }
 
-  return array;
-}()
+  Game.ECS.collisionBoard = array;
+}());
 
 function collides(shape, position, x, y) {
   // If there is no pieces on the bottom row
   // we still count it as a collision
-  if (position.y + x + 1 === Board.horizontalSquares) {
+  if (position.y + x + 1 === Game.Board.horizontalSquares) {
     return true;
   }
-  if (ECS.collisionBoard[position.y + x + 1][position.x + y]) {
+  if (Game.ECS.collisionBoard[position.y + x + 1][position.x + y]) {
     return true;
   }
   return false;
-};
+}
 
 function invalidLocation(shape, position, x, y) {
-  if (ECS.collisionBoard[position.y + x][position.x + y + 1]) {
-    return true;
-  }
-  if (ECS.collisionBoard[position.y + x][position.x + y - 1]) {
+  if (Game.ECS.collisionBoard[position.y + x][position.x + y + position.xVelocity]) {
     return true;
   }
   return false;
@@ -41,13 +40,13 @@ function addToCollisionBoard(shape, position) {
   for (var x = 3; x >= 0; x--) {
     for (var y = 0; y <= 3; y++) {
       if (shape[x][y] === true) {
-        ECS.collisionBoard[position.y + x][position.x + y] = true;
+        Game.ECS.collisionBoard[position.y + x][position.x + y] = true;
       }
     }
   }
 }
 
-ECS.Systems.collision = function collisionSystem(entities) {
+Game.ECS.Systems.collision = function collisionSystem(entities) {
   var entity;
 
   for (var entityId in entities) {
@@ -67,14 +66,19 @@ ECS.Systems.collision = function collisionSystem(entities) {
                   // console.log ("--- Adding shape to collision detected!");
                   addToCollisionBoard(entity.components.shape.tetrimino, entity.components.position);
                   // console.log ("--- Removing PlayerControlled");
-                  entity.removeComponent(ECS.Components.PlayerControlled);
+                  entity.removeComponent(Game.ECS.Components.PlayerControlled);
                   // console.log ("--- Removing Gravity");
-                  entity.removeComponent(ECS.Components.Gravity);
+                  entity.removeComponent(Game.ECS.Components.Gravity);
+
                   return;
                 }
 
                 if (invalidLocation(shape, position, x, y)) {
-                  console.log ("unable to move to that location");
+                  console.log ('unable to move to that location');
+                  position.xVelocity = 0;
+                } else {
+                  position.x += position.xVelocity;
+                  position.xVelocity = 0;
                 }
               }
             }

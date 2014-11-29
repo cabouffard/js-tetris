@@ -46,24 +46,28 @@
     <!-- endbuild -->
 
     <!-- build:js({app,.tmp}) scripts/main.js -->
-    <script src="scripts/main.js"></script>
+    <script src="scripts/game.js"></script>
     <script src="scripts/entity.js"></script>
+    <!-- Loading components -->
     <script src="scripts/components/colorComponent.js"></script>
-    <script src="scripts/components/gridComponent.js"></script>
     <script src="scripts/components/positionComponent.js"></script>
     <script src="scripts/components/shapeComponent.js"></script>
     <script src="scripts/components/playerControlledComponent.js"></script>
     <script src="scripts/components/collisionComponent.js"></script>
     <script src="scripts/components/gravityComponent.js"></script>
     <script src="scripts/assemblages/tetrominoes.js"></script>
+    <!-- Loading systems -->
     <script src="scripts/systems/collisionSystem.js"></script>
     <script src="scripts/systems/userInputSystem.js"></script>
     <script src="scripts/systems/renderSystem.js"></script>
     <script src="scripts/systems/gravitySystem.js"></script>
     <script src="scripts/systems/randomizerSystem.js"></script>
     <script src="scripts/systems/gameState.js"></script>
-
-    <script src="scripts/game.js"></script>
+    <script src="scripts/systems.js"></script>
     <!-- endbuild -->
+
+    <script type="text/javascript">
+        window.onEachFrame(Game.run);
+    </script>
 </body>
 </html>

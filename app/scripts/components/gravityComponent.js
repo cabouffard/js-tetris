@@ -1,14 +1,16 @@
 'use strict';
 
-ECS.Components.Gravity = function GravityComponent (speed) {
+var Game = Game || {};
+
+Game.ECS.Components.Gravity = function GravityComponent (speed) {
   // Default values
   speed = speed || 1;
 
   this.speed = speed;
   this.waiting = false;
 
-  return this
+  return this;
 };
 
-ECS.Components.Gravity.prototype.name = 'gravity';
+Game.ECS.Components.Gravity.prototype.name = 'gravity';
 

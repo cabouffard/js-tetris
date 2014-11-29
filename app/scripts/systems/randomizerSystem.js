@@ -1,15 +1,34 @@
-function addNewTetrimino(isFirstPiece) {
-  if (isFirstPiece) {
-    console.log ('First piece mate !');
-    var entity = new ECS.Assemblages.JTetromino();
-    ECS.Entities[entity.id] = entity;
-  } else {
-    var entity = new ECS.Assemblages.OTetromino();
-    ECS.Entities[entity.id] = entity;
+'use strict';
+
+var Game = Game || {};
+
+function generateRandomPiece() {
+  var randomNumber = Math.floor(Math.random() * 7 + 1);
+  switch (randomNumber) {
+    case 1:
+      return new Game.ECS.Assemblages.ITetromino();
+    case 2:
+      return new Game.ECS.Assemblages.OTetromino();
+    case 3:
+      return new Game.ECS.Assemblages.JTetromino();
+    case 4:
+      return new Game.ECS.Assemblages.LTetromino();
+    case 5:
+      return new Game.ECS.Assemblages.STetromino();
+    case 6:
+      return new Game.ECS.Assemblages.ZTetromino();
+    case 7:
+      return new Game.ECS.Assemblages.TTetromino();
   }
 }
 
-ECS.Systems.randomizer = function randomizerSystem (entities) {
+
+function addNewTetrimino() {
+  var entity = generateRandomPiece();
+  Game.ECS.Entities[entity.id] = entity;
+}
+
+Game.ECS.Systems.randomizer = function randomizerSystem (entities) {
   var needNewPiece = true;
   var entity;
 
@@ -23,10 +42,8 @@ ECS.Systems.randomizer = function randomizerSystem (entities) {
   }
 
   if (needNewPiece) {
-    console.log ("We need a new piece sir!");
-    var newEntity = new ECS.Assemblages.JTetromino();
-    ECS.Entities[newEntity.id] = newEntity;
+    console.log ('We need a new piece sir!');
+    addNewTetrimino();
   }
 };
-
 

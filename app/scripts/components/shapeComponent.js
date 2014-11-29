@@ -1,8 +1,10 @@
 'use strict';
 
-ECS.Components.Shape = function ShapeComponent (tetrimino) {
+var Game = Game || {};
+
+Game.ECS.Components.Shape = function ShapeComponent (tetrimino) {
   switch (tetrimino) {
-    case ECS.Components.Shape.prototype.tetrominoes.I:
+    case Game.ECS.Components.Shape.prototype.tetrominoes.I:
       this.tetrimino = [
         [false,false,false,false],
         [true,true,true,true],
@@ -10,7 +12,7 @@ ECS.Components.Shape = function ShapeComponent (tetrimino) {
         [false,false,false,false]
           ];
       break;
-    case ECS.Components.Shape.prototype.tetrominoes.O:
+    case Game.ECS.Components.Shape.prototype.tetrominoes.O:
       this.tetrimino = [
         [false,true,true,false],
         [false,true,true,false],
@@ -18,7 +20,7 @@ ECS.Components.Shape = function ShapeComponent (tetrimino) {
         [false,false,false,false]
           ];
       break;
-    case ECS.Components.Shape.prototype.tetrominoes.J:
+    case Game.ECS.Components.Shape.prototype.tetrominoes.J:
       this.tetrimino = [
         [true,false,false,false],
         [true,true,true,false],
@@ -26,35 +28,35 @@ ECS.Components.Shape = function ShapeComponent (tetrimino) {
         [false,false,false,false]
           ];
       break;
-    case ECS.Components.Shape.prototype.tetrominoes.L:
+    case Game.ECS.Components.Shape.prototype.tetrominoes.L:
       this.tetrimino = [
         [false,false,true,false],
         [true,true,true,false],
-        [false,false,false,false]
+        [false,false,false,false],
         [false,false,false,false]
           ];
       break;
-    case ECS.Components.Shape.prototype.tetrominoes.S:
+    case Game.ECS.Components.Shape.prototype.tetrominoes.S:
       this.tetrimino = [
         [false,true,true,false],
         [true,true,false,false],
-        [false,false,false,false]
+        [false,false,false,false],
         [false,false,false,false]
           ];
       break;
-    case ECS.Components.Shape.prototype.tetrominoes.T:
+    case Game.ECS.Components.Shape.prototype.tetrominoes.T:
       this.tetrimino = [
         [false,true,false,false],
         [true,true,true,false],
-        [false,false,false,false]
+        [false,false,false,false],
         [false,false,false,false]
           ];
       break;
-    case ECS.Components.Shape.prototype.tetrominoes.Z:
+    case Game.ECS.Components.Shape.prototype.tetrominoes.Z:
       this.tetrimino = [
         [true,true,false,false],
         [false,true,true,false],
-        [false,false,false,false]
+        [false,false,false,false],
         [false,false,false,false]
           ];
       break;
@@ -62,7 +64,7 @@ ECS.Components.Shape = function ShapeComponent (tetrimino) {
 };
 
 // Source : http://jsfiddle.net/MrPolywhirl/NH42z/
-ECS.Components.Shape.prototype.transpose = function transpose() {
+Game.ECS.Components.Shape.prototype.transpose = function transpose() {
   var result = new Array(this.tetrimino[0].length);
   for (var i = 0; i < this.tetrimino[0].length; i++) {
     result[i] = new Array(this.tetrimino.length - 1);
@@ -71,23 +73,23 @@ ECS.Components.Shape.prototype.transpose = function transpose() {
     }
   }
   this.tetrimino = result;
-}
+};
 
-ECS.Components.Shape.prototype.reverseRows = function reverseRows() {
+Game.ECS.Components.Shape.prototype.reverseRows = function reverseRows() {
   this.tetrimino = this.tetrimino.reverse();
-}
+};
 
-ECS.Components.Shape.prototype.rotateClockwise = function rotateClockwise() {
+Game.ECS.Components.Shape.prototype.rotateClockwise = function rotateClockwise() {
   this.transpose();
   this.reverseRows();
-}
+};
 
-ECS.Components.Shape.prototype.rotateCounterclockwise = function rotateCounterclockwise() {
+Game.ECS.Components.Shape.prototype.rotateCounterclockwise = function rotateCounterclockwise() {
   this.reverseRows();
   this.transpose();
-}
+};
 
-ECS.Components.Shape.prototype.tetrominoes = {
+Game.ECS.Components.Shape.prototype.tetrominoes = {
   I: 1,
   J: 2,
   L: 3,
@@ -95,15 +97,6 @@ ECS.Components.Shape.prototype.tetrominoes = {
   S: 5,
   T: 6,
   Z: 7,
-  properties: {
-    1: {value: 1, percent: "I"},
-    2: {value: 2, percent: "J"},
-    3: {value: 3, percent: "L"},
-    4: {value: 4, percent: "O"},
-    5: {value: 5, percent: "S"},
-    6: {value: 6, percent: "T"},
-    7: {value: 7, percent: "Z"}
-  }
 };
 
-ECS.Components.Shape.prototype.name = 'shape';
+Game.ECS.Components.Shape.prototype.name = 'shape';
