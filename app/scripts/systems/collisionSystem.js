@@ -43,15 +43,10 @@ function collisionDetection(entity){
     for (var y = 0; y <= 3; y++) {
 
       if (shape[x][y]) {
-        // if (invalidLocation(shape, position, x, y)) {
-        //   console.log ('unable to move to that location');
-        //   position.xVelocity = 0;
-        // } else {
-        //   position.x += position.xVelocity;
-        //   position.xVelocity = 0;
-        // }
+        if (invalidLocation(shape, position, x, y)) {
+          position.xVelocity = 0;
+        }
         if (collides(shape, position, x, y)) {
-          // console.log ('I have detected a collision! ');
           position.yVelocity = 0;
           // entity.removeComponent(Game.ECS.Components.Gravity);
           entity.removeComponent(Game.ECS.Components.PlayerControlled);
