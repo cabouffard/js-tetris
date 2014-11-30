@@ -11,10 +11,14 @@ var userInput = {
 };
 
 function keyDownHandler(event) {
+  if (Game.paused && event.keyCode !== 80 && event.keyCode !== 82) {
+    return;
+  }
+
   switch (event.keyCode) {
     // left
     case 37:
-      userInput.x -= 1;
+      userInput.x = -1;
       break;
     // up, hard-drop
     case 38:
@@ -22,11 +26,11 @@ function keyDownHandler(event) {
       break;
     // right
     case 39:
-      userInput.x += 1;
+      userInput.x = 1;
       break;
     // down
     case 40:
-      userInput.y += 1;
+      userInput.y = 1;
       break;
     // m
     case 77:
@@ -39,6 +43,10 @@ function keyDownHandler(event) {
     // p
     case 80:
       Game.pause();
+      break;
+    // r
+    case 82:
+      Game.restart();
       break;
     default:
       console.log('Key not handled: ' + event.keyCode);
@@ -56,8 +64,8 @@ Game.ECS.Systems.userInput = function userInputSystem (entities) {
     entity = entities[entityId];
 
     if (entity.components.playerControlled && entity.components.position) {
-      entity.components.position.xVelocity += userInput.x;
-      entity.components.position.y += userInput.y;
+        entity.components.position.xVelocity += userInput.x;
+        entity.components.position.yVelocity += userInput.y;
 
       if (entity.components.shape) {
         if (userInput.clockwise) {

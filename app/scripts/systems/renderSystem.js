@@ -28,22 +28,22 @@ function drawShape(entity, posX, posY) {
       );
 }
 
-// function debugShowingCollision() {
-//
-//   Game.ECS.context.fillStyle = 'rgb(255,0,0,0.25)';
-//   for (var i = 0; i < Game.Board.verticalSquares; i++) {
-//     for (var j = 0; j < Game.Board.horizontalSquares; j++) {
-//       if (Game.ECS.collisionGame.Board[i][j]) {
-//         Game.ECS.context.fillRect(
-//             (i) * Game.Board.unitWidth,
-//             (j) * Game.Board.unitHeight,
-//             Game.Board.unitWidth,
-//             Game.Board.unitHeight
-//             );
-//       }
-//     }
-//   }
-// }
+function debugShowingCollision() {
+
+  Game.context.fillStyle = 'rgb(255,0,0,0.25)';
+  for (var i = 0; i < Game.Board.horizontalSquares; i++) {
+    for (var j = 0; j < Game.Board.verticalSquares; j++) {
+      if (Game.ECS.collisionBoard[i][j]) {
+        Game.context.fillRect(
+            (j) * Game.Board.unitWidth,
+            (i) * Game.Board.unitHeight,
+            Game.Board.unitWidth,
+            Game.Board.unitHeight
+            );
+      }
+    }
+  }
+}
 
 function drawGrid(){
   for (var x = 0.5; x < Game.$canvas.width; x += Game.Board.unitWidth) {

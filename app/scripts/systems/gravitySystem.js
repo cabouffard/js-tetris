@@ -7,7 +7,7 @@ function addTimer(entity) {
     // Since this is ran x amount of time, it is possible
     // that the entity do not have the gravity component
     if (entity.components.gravity) {
-      entity.components.position.y += 1;
+      entity.components.position.yVelocity = 1;
       entity.components.gravity.waiting = false;
     }
   }, entity.components.gravity.speed * 1000);
@@ -27,7 +27,6 @@ Game.ECS.Systems.gravity = function gravitySystem (entities) {
     }
   }
 };
-
 
 Game.ECS.Components.Gravity.prototype.hardDrop = function hardDrop() {
   console.log ('Hard Drop not yet implemented');

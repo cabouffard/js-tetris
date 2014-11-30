@@ -41,6 +41,12 @@ Game.pause = function() {
   }
 };
 
+Game.restart = function() {
+  // TODO: Temp way of doing this
+  Game.ECS.Entities = {};
+  console.log ('Game Restarted !');
+};
+
 Game.run = (function() {
   var loops = 0;
   var nextGameTick = Date.now();
@@ -50,6 +56,7 @@ Game.run = (function() {
     while (!Game.paused && Date.now() > nextGameTick && loops < Game.maxFrameSkip) {
       Game.update(nextGameTick - startTime);
       nextGameTick += Game.skipTicks;
+      startTime = Date.now();
       loops++;
     }
   };
@@ -84,3 +91,5 @@ Game.run = (function() {
 
 
 Game.initialize();
+
+
