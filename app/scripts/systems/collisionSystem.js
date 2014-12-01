@@ -42,7 +42,7 @@ function collides(shape, position, x, y) {
 }
 
 function collisionDetection(entity){
-  var shape = entity.components.shape.tetrimino;
+  var shape = entity.components.shape.tetromino;
   var position = entity.components.position;
 
   // Starting for the bottom
@@ -59,7 +59,7 @@ function collisionDetection(entity){
           position.yVelocity = 0;
           // entity.removeComponent(Game.ECS.Components.Gravity);
           entity.removeComponent(Game.ECS.Components.PlayerControlled);
-          addToCollisionBoard(entity.components.shape.tetrimino, entity.components.position);
+          addToCollisionBoard(entity.components.shape.tetromino, entity.components.position);
           return;
         }
       }

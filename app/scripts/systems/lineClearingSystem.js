@@ -35,7 +35,7 @@ Game.ECS.Systems.lineClearing = function lineClearing(entities) {
   for (var entityId in entities) {
     entity = entities[entityId];
     if (entity.components.collision && entity.components.position && entity.components.shape) {
-      var shape = entity.components.shape.tetrimino;
+      var shape = entity.components.shape.tetromino;
       var position = entity.components.position;
       for (var line in linesCleared.lines) {
         var allo = linesCleared.lines[line];

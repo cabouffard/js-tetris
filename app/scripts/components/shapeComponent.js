@@ -2,10 +2,10 @@
 
 var Game = Game || {};
 
-Game.ECS.Components.Shape = function ShapeComponent (tetrimino) {
-  switch (tetrimino) {
+Game.ECS.Components.Shape = function ShapeComponent (tetromino) {
+  switch (tetromino) {
     case Game.ECS.Components.Shape.prototype.tetrominoes.I:
-      this.tetrimino = [
+      this.tetromino = [
         [0,0,0,0],
         [1,1,1,1],
         [0,0,0,0],
@@ -13,7 +13,7 @@ Game.ECS.Components.Shape = function ShapeComponent (tetrimino) {
           ];
       break;
     case Game.ECS.Components.Shape.prototype.tetrominoes.O:
-      this.tetrimino = [
+      this.tetromino = [
         [0,1,1,0],
         [0,1,1,0],
         [0,0,0,0],
@@ -21,7 +21,7 @@ Game.ECS.Components.Shape = function ShapeComponent (tetrimino) {
           ];
       break;
     case Game.ECS.Components.Shape.prototype.tetrominoes.J:
-      this.tetrimino = [
+      this.tetromino = [
         [1,0,0,0],
         [1,1,1,0],
         [0,0,0,0],
@@ -29,7 +29,7 @@ Game.ECS.Components.Shape = function ShapeComponent (tetrimino) {
           ];
       break;
     case Game.ECS.Components.Shape.prototype.tetrominoes.L:
-      this.tetrimino = [
+      this.tetromino = [
         [0,0,1,0],
         [1,1,1,0],
         [0,0,0,0],
@@ -37,7 +37,7 @@ Game.ECS.Components.Shape = function ShapeComponent (tetrimino) {
           ];
       break;
     case Game.ECS.Components.Shape.prototype.tetrominoes.S:
-      this.tetrimino = [
+      this.tetromino = [
         [0,1,1,0],
         [1,1,0,0],
         [0,0,0,0],
@@ -45,7 +45,7 @@ Game.ECS.Components.Shape = function ShapeComponent (tetrimino) {
           ];
       break;
     case Game.ECS.Components.Shape.prototype.tetrominoes.T:
-      this.tetrimino = [
+      this.tetromino = [
         [0,1,0,0],
         [1,1,1,0],
         [0,0,0,0],
@@ -53,7 +53,7 @@ Game.ECS.Components.Shape = function ShapeComponent (tetrimino) {
           ];
       break;
     case Game.ECS.Components.Shape.prototype.tetrominoes.Z:
-      this.tetrimino = [
+      this.tetromino = [
         [1,1,0,0],
         [0,1,1,0],
         [0,0,0,0],
@@ -65,18 +65,18 @@ Game.ECS.Components.Shape = function ShapeComponent (tetrimino) {
 
 // Source : http://jsfiddle.net/MrPolywhirl/NH42z/
 Game.ECS.Components.Shape.prototype.transpose = function transpose() {
-  var result = new Array(this.tetrimino[0].length);
-  for (var i = 0; i < this.tetrimino[0].length; i++) {
-    result[i] = new Array(this.tetrimino.length - 1);
-    for (var j = this.tetrimino.length - 1; j > -1; j--) {
-      result[i][j] = this.tetrimino[j][i];
+  var result = new Array(this.tetromino[0].length);
+  for (var i = 0; i < this.tetromino[0].length; i++) {
+    result[i] = new Array(this.tetromino.length - 1);
+    for (var j = this.tetromino.length - 1; j > -1; j--) {
+      result[i][j] = this.tetromino[j][i];
     }
   }
-  this.tetrimino = result;
+  this.tetromino = result;
 };
 
 Game.ECS.Components.Shape.prototype.reverseRows = function reverseRows() {
-  this.tetrimino = this.tetrimino.reverse();
+  this.tetromino = this.tetromino.reverse();
 };
 
 Game.ECS.Components.Shape.prototype.rotateClockwise = function rotateClockwise() {

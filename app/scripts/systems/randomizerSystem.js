@@ -29,7 +29,7 @@ function generateRandomPiece() {
   }
 }
 
-function getNewTetrimino() {
+function getNewtetromino() {
   var entity = generateRandomPiece();
   Game.ECS.Entities[entity.id] = entity;
 
@@ -63,7 +63,7 @@ Game.ECS.Systems.randomizer = function randomizerSystem (entities) {
   }
 
   if (!Game.NextPiece.isSet) {
-    Game.NextPiece.tetromino = getNewTetrimino();
+    Game.NextPiece.tetromino = getNewtetromino();
     Game.NextPiece.isSet = true;
     Game.NextPiece.hasChanged = true;
   }

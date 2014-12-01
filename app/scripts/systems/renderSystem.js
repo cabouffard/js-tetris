@@ -59,33 +59,22 @@ function drawGrid(canvas){
   canvas.context.stroke();
 }
 
-function clearBoardCanvas () {
-  Game.Board.context.save();
+function clearCanvas(canvas) {
+  canvas.context.save();
 
-  Game.Board.context.setTransform(1, 0, 0, 1, 0, 0);
-  Game.Board.context.clearRect(0, 0, Game.Board.$canvas.width, Game.Board.$canvas.height);
+  canvas.context.setTransform(1, 0, 0, 1, 0, 0);
+  canvas.context.clearRect(0, 0, canvas.$canvas.width, canvas.$canvas.height);
 
-  Game.Board.context.restore();
+  canvas.context.restore();
 
-  drawGrid(Game.Board);
-}
-
-function clearNextPieceCanvas () {
-  Game.NextPiece.context.save();
-
-  Game.NextPiece.context.setTransform(1, 0, 0, 1, 0, 0);
-  Game.NextPiece.context.clearRect(0, 0, Game.NextPiece.$canvas.width, Game.NextPiece.$canvas.height);
-
-  Game.NextPiece.context.restore();
-
-  drawGrid(Game.NextPiece);
+  drawGrid(canvas);
 }
 
 function renderTetromino(entity, canvas) {
-    var tetrimino = entity.components.shape.tetrimino;
-    for (var x = 0; x < tetrimino.length; x++) {
-      for (var y = 0; y < tetrimino[x].length; y++) {
-        if (tetrimino[x][y]) {
+    var tetromino = entity.components.shape.tetromino;
+    for (var x = 0; x < tetromino.length; x++) {
+      for (var y = 0; y < tetromino[x].length; y++) {
+        if (tetromino[x][y]) {
           drawShape(entity, x, y, canvas);
         }
       }
@@ -93,8 +82,7 @@ function renderTetromino(entity, canvas) {
 }
 
 Game.ECS.Systems.render = function renderSystem (entities) {
-  clearBoardCanvas();
-  clearNextPieceCanvas();
+  clearCanvas(Game.Board);
 
   var entity;
 
@@ -107,6 +95,7 @@ Game.ECS.Systems.render = function renderSystem (entities) {
       if (entity.components.placeHolder) {
         if (Game.NextPiece.hasChanged) {
           canvas = Game.NextPiece;
+          clearCanvas(canvas);
           mustRender = true;
         } else {
           mustRender = false;
