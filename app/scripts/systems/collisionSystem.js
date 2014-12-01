@@ -21,8 +21,8 @@ function invalidLocation(shape, position, x, y) {
 function addToCollisionBoard(shape, position) {
   for (var x = 3; x >= 0; x--) {
     for (var y = 0; y <= 3; y++) {
-      if (shape[x][y] === true) {
-        Game.ECS.collisionBoard[position.y + x][position.x + y] = true;
+      if (shape[x][y]) {
+        Game.ECS.collisionBoard[position.y + x][position.x + y] = 1;
       }
     }
   }
@@ -68,13 +68,13 @@ function collisionDetection(entity){
 }
 
 Game.ECS.collisionBoard = [];
-(function initBoard() {
+(function initCollisionBoard() {
   var array = new Array(Game.Board.horizontalSquares);
   for (var i = 0; i < Game.Board.horizontalSquares; i++) {
     array[i] = new Array(Game.Board.verticalSquares);
     // TODO: fix this, this is fugly
     for (var j = 0; j < Game.Board.verticalSquares; j++) {
-      array[i][j] = false;
+      array[i][j] = 0;
     }
   }
 

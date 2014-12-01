@@ -6,58 +6,58 @@ Game.ECS.Components.Shape = function ShapeComponent (tetrimino) {
   switch (tetrimino) {
     case Game.ECS.Components.Shape.prototype.tetrominoes.I:
       this.tetrimino = [
-        [false,false,false,false],
-        [true,true,true,true],
-        [false,false,false,false],
-        [false,false,false,false]
+        [0,0,0,0],
+        [1,1,1,1],
+        [0,0,0,0],
+        [0,0,0,0]
           ];
       break;
     case Game.ECS.Components.Shape.prototype.tetrominoes.O:
       this.tetrimino = [
-        [false,true,true,false],
-        [false,true,true,false],
-        [false,false,false,false],
-        [false,false,false,false]
+        [0,1,1,0],
+        [0,1,1,0],
+        [0,0,0,0],
+        [0,0,0,0]
           ];
       break;
     case Game.ECS.Components.Shape.prototype.tetrominoes.J:
       this.tetrimino = [
-        [true,false,false,false],
-        [true,true,true,false],
-        [false,false,false,false],
-        [false,false,false,false]
+        [1,0,0,0],
+        [1,1,1,0],
+        [0,0,0,0],
+        [0,0,0,0]
           ];
       break;
     case Game.ECS.Components.Shape.prototype.tetrominoes.L:
       this.tetrimino = [
-        [false,false,true,false],
-        [true,true,true,false],
-        [false,false,false,false],
-        [false,false,false,false]
+        [0,0,1,0],
+        [1,1,1,0],
+        [0,0,0,0],
+        [0,0,0,0]
           ];
       break;
     case Game.ECS.Components.Shape.prototype.tetrominoes.S:
       this.tetrimino = [
-        [false,true,true,false],
-        [true,true,false,false],
-        [false,false,false,false],
-        [false,false,false,false]
+        [0,1,1,0],
+        [1,1,0,0],
+        [0,0,0,0],
+        [0,0,0,0]
           ];
       break;
     case Game.ECS.Components.Shape.prototype.tetrominoes.T:
       this.tetrimino = [
-        [false,true,false,false],
-        [true,true,true,false],
-        [false,false,false,false],
-        [false,false,false,false]
+        [0,1,0,0],
+        [1,1,1,0],
+        [0,0,0,0],
+        [0,0,0,0]
           ];
       break;
     case Game.ECS.Components.Shape.prototype.tetrominoes.Z:
       this.tetrimino = [
-        [true,true,false,false],
-        [false,true,true,false],
-        [false,false,false,false],
-        [false,false,false,false]
+        [1,1,0,0],
+        [0,1,1,0],
+        [0,0,0,0],
+        [0,0,0,0]
           ];
       break;
   }
@@ -96,7 +96,7 @@ Game.ECS.Components.Shape.prototype.tetrominoes = {
   O: 4,
   S: 5,
   T: 6,
-  Z: 7,
+  Z: 7
 };
 
 Game.ECS.Components.Shape.prototype.name = 'shape';

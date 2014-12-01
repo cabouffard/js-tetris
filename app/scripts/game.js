@@ -65,11 +65,12 @@ Game.restart = function() {
   Game.ECS.Entities = {};
   Game.NextPiece.isSet = false;
   Game.NextPiece.hasChanged = true;
-  Game.paused = false;
   Game.Stats.tetrominos = { I: 0, J: 0, L: 0, Z: 0, S: 0, O: 0, T: 0 };
   Game.Stats.linesCleared = 0;
+  Game.paused = false;
 
   console.log ('Game Restarted !');
+  console.log ('Current bug -> CollisionBoard not cleared');
 };
 
 Game.run = (function() {
