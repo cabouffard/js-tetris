@@ -29,6 +29,7 @@ Game.ECS.Systems.statistics = function statisticsSystem () {
 
   Game.Stats.context.font = '10pt Calibri';
   Game.Stats.context.fillText('Line Cleared : ' +  Game.Stats.linesCleared, Game.Stats.width / 4 - 5, 300);
+  Game.Stats.context.fillText('Current Level : ' +  Game.Stats.currentLevel, Game.Stats.width / 4 - 5, 325);
 };
 
 

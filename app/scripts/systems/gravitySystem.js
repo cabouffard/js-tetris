@@ -10,6 +10,9 @@ function addTimer(entity) {
       entity.components.position.yVelocity = 1;
       entity.components.gravity.waiting = false;
     }
+    else {
+      clearTimeout();
+    }
   }, entity.components.gravity.speed * 1000);
 }
 

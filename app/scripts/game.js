@@ -32,7 +32,7 @@ Game.initialize = function() {
   Game.Stats.height = Game.Stats.$canvas.height;
   Game.Stats.tetrominos = { I: 0, J: 0, L: 0, Z: 0, S: 0, O: 0, T: 0 };
   Game.Stats.linesCleared = 0;
-
+  Game.Stats.currentLevel = 1;
 
   Game.Board = {};
   Game.Board.$canvas = document.getElementById('tetrisCanvas');
