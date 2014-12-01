@@ -15,7 +15,6 @@ function isNotUsed(tetrimino) {
   return false;
 }
 
-
 Game.ECS.Systems.garbageCollector = function garbageCollectorSystem (entities) {
   var entity;
 

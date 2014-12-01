@@ -24,6 +24,7 @@ Game.ECS.Systems.lineClearing = function lineClearing(entities) {
     if (isFull) {
       linesCleared.lines.push(y);
       linesCleared.streak += 1;
+      Game.Stats.linesCleared += 1;
     }
   }
 

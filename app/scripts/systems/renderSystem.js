@@ -29,7 +29,6 @@ function drawShape(entity, posX, posY, canvas) {
 }
 
 function debugShowingCollision() {
-
   Game.Board.context.fillStyle = 'rgb(255,0,0,0.25)';
   for (var i = 0; i < Game.Board.horizontalSquares; i++) {
     for (var j = 0; j < Game.Board.verticalSquares; j++) {

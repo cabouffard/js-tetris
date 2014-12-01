@@ -11,6 +11,7 @@ Game.ECS.Systems = [
   Game.ECS.Systems.lineClearing,
   Game.ECS.Systems.render,
   Game.ECS.Systems.gameState,
+  Game.ECS.Systems.statistics,
   Game.ECS.Systems.garbageCollector
 ];
 

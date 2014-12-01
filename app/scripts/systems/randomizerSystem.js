@@ -6,18 +6,25 @@ function generateRandomPiece() {
   var randomNumber = Math.floor(Math.random() * 7 + 1);
   switch (randomNumber) {
     case 1:
+      Game.Stats.tetrominos.I++;
       return new Game.ECS.Assemblages.ITetromino(true);
     case 2:
+      Game.Stats.tetrominos.O++;
       return new Game.ECS.Assemblages.OTetromino(true);
     case 3:
+      Game.Stats.tetrominos.J++;
       return new Game.ECS.Assemblages.JTetromino(true);
     case 4:
+      Game.Stats.tetrominos.L++;
       return new Game.ECS.Assemblages.LTetromino(true);
     case 5:
+      Game.Stats.tetrominos.S++;
       return new Game.ECS.Assemblages.STetromino(true);
     case 6:
+      Game.Stats.tetrominos.Z++;
       return new Game.ECS.Assemblages.ZTetromino(true);
     case 7:
+      Game.Stats.tetrominos.T++;
       return new Game.ECS.Assemblages.TTetromino(true);
   }
 }

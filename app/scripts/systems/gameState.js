@@ -3,7 +3,6 @@
 var Game = Game || {};
 
 function showGameOver() {
-  console.log ('game done!');
   Game.Board.context.font = 'italic 25pt Calibri';
   Game.Board.context.fillStyle = '#000';
   Game.Board.context.fillText('Game Over!', 15, 100);
