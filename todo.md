@@ -7,6 +7,5 @@
 * Fix line clearing, set collisions automaticly aka remove collisionComponent
 * Add scoring system
 * Add statistics
-* Add next tetromino in queue
 * Add levels (speed increment per level)
 * Add Harddrop (instant piece down)

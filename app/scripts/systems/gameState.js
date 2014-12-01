@@ -4,18 +4,18 @@ var Game = Game || {};
 
 function showGameOver() {
   console.log ('game done!');
-  Game.context.font = 'italic 25pt Calibri';
-  Game.context.fillStyle = '#000';
-  Game.context.fillText('Game Over !', 15, 100);
+  Game.Board.context.font = 'italic 25pt Calibri';
+  Game.Board.context.fillStyle = '#000';
+  Game.Board.context.fillText('Game Over!', 15, 100);
 
   var img = new Image();
   img.onload = function() {
     console.log ('done');
-    Game.context.drawImage(img, 15, 120, 175, 150);
+    Game.Board.context.drawImage(img, 15, 120, 175, 150);
   };
   img.src = 'images/game_over.png';
 
-  Game.$canvas.style.borderColor = 'red';
+  Game.Board.$canvas.style.borderColor = 'red';
 
   Game.paused = true;
 }

@@ -2,18 +2,22 @@
 
 var Game = Game || {};
 
-Game.ECS.Assemblages.BasicTetromino = function BasicTetromino() {
-  var entity = new Game.ECS.Entity();
-  entity.addComponent(new Game.ECS.Components.Position());
-  entity.addComponent(new Game.ECS.Components.PlayerControlled());
-  entity.addComponent(new Game.ECS.Components.Collision());
-  entity.addComponent(new Game.ECS.Components.Gravity());
-
+Game.ECS.Assemblages.BasicTetromino = function BasicTetromino(isPlaceHolder) {
+  var entity = new Game.ECS.Entity(isPlaceHolder);
+  if (!isPlaceHolder) {
+    entity.addComponent(new Game.ECS.Components.Position());
+    entity.addComponent(new Game.ECS.Components.PlayerControlled());
+    entity.addComponent(new Game.ECS.Components.Collision());
+    entity.addComponent(new Game.ECS.Components.Gravity());
+  } else {
+    entity.addComponent(new Game.ECS.Components.Position(1, 1));
+    entity.addComponent(new Game.ECS.Components.PlaceHolder());
+  }
   return entity;
 };
 
-Game.ECS.Assemblages.ITetromino = function ITetromino() {
-  var entity = new Game.ECS.Assemblages.BasicTetromino();
+Game.ECS.Assemblages.ITetromino = function ITetromino(isPlaceHolder) {
+  var entity = new Game.ECS.Assemblages.BasicTetromino(isPlaceHolder);
   entity.addComponent(new Game.ECS.Components.Color('rgb(214, 30, 60)',
                                               'rgb(241, 108, 107)',
                                               'rgb(236, 42, 75)'));
@@ -21,8 +25,8 @@ Game.ECS.Assemblages.ITetromino = function ITetromino() {
   return entity;
 };
 
-Game.ECS.Assemblages.JTetromino = function JTetromino() {
-  var entity = new Game.ECS.Assemblages.BasicTetromino();
+Game.ECS.Assemblages.JTetromino = function JTetromino(isPlaceHolder) {
+  var entity = new Game.ECS.Assemblages.BasicTetromino(isPlaceHolder);
   entity.addComponent(new Game.ECS.Components.Color('rgb(220, 159, 39)',
                                               'rgb(246, 197, 100)',
                                               'rgb(242, 181, 42)'));
@@ -30,8 +34,8 @@ Game.ECS.Assemblages.JTetromino = function JTetromino() {
   return entity;
 };
 
-Game.ECS.Assemblages.LTetromino = function LTetromino() {
-  var entity = new Game.ECS.Assemblages.BasicTetromino();
+Game.ECS.Assemblages.LTetromino = function LTetromino(isPlaceHolder) {
+  var entity = new Game.ECS.Assemblages.BasicTetromino(isPlaceHolder);
   entity.addComponent(new Game.ECS.Components.Color('rgb(158, 35, 126)',
                                               'rgb(192, 111, 173)',
                                               'rgb(179, 63, 151)'));
@@ -39,8 +43,8 @@ Game.ECS.Assemblages.LTetromino = function LTetromino() {
   return entity;
 };
 
-Game.ECS.Assemblages.OTetromino = function OTetromino() {
-  var entity = new Game.ECS.Assemblages.BasicTetromino();
+Game.ECS.Assemblages.OTetromino = function OTetromino(isPlaceHolder) {
+  var entity = new Game.ECS.Assemblages.BasicTetromino(isPlaceHolder);
   entity.addComponent(new Game.ECS.Components.Color('rgb(59, 84, 165)',
                                               'rgb(118, 137, 196)',
                                               'rgb(79, 111, 182)'));
@@ -48,8 +52,8 @@ Game.ECS.Assemblages.OTetromino = function OTetromino() {
   return entity;
 };
 
-Game.ECS.Assemblages.STetromino = function STetromino() {
-  var entity = new Game.ECS.Assemblages.BasicTetromino();
+Game.ECS.Assemblages.STetromino = function STetromino(isPlaceHolder) {
+  var entity = new Game.ECS.Assemblages.BasicTetromino(isPlaceHolder);
   entity.addComponent(new Game.ECS.Components.Color('rgb(236, 94, 36)',
                                               'rgb(234, 154, 84)',
                                               'rgb(228, 126, 37)'));
@@ -57,8 +61,8 @@ Game.ECS.Assemblages.STetromino = function STetromino() {
   return entity;
 };
 
-Game.ECS.Assemblages.TTetromino = function TTetromino() {
-  var entity = new Game.ECS.Assemblages.BasicTetromino();
+Game.ECS.Assemblages.TTetromino = function TTetromino(isPlaceHolder) {
+  var entity = new Game.ECS.Assemblages.BasicTetromino(isPlaceHolder);
   entity.addComponent(new Game.ECS.Components.Color('rgb(62, 170, 212)',
                                               'rgb(120, 205, 244)',
                                               'rgb(54, 192, 240)'));
@@ -66,8 +70,8 @@ Game.ECS.Assemblages.TTetromino = function TTetromino() {
   return entity;
 };
 
-Game.ECS.Assemblages.ZTetromino = function ZTetromino() {
-  var entity = new Game.ECS.Assemblages.BasicTetromino();
+Game.ECS.Assemblages.ZTetromino = function ZTetromino(isPlaceHolder) {
+  var entity = new Game.ECS.Assemblages.BasicTetromino(isPlaceHolder);
   entity.addComponent(new Game.ECS.Components.Color('rgb(88, 178, 71)',
                                               'rgb(150, 204, 110)',
                                               'rgb(115, 191, 68)'));

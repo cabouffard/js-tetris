@@ -25,7 +25,15 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <canvas id="tetrisCanvas" tabindex='1' width="200" height="400" />
+    <div>
+        <canvas id="statsCanvas" width="125" height="400" />
+    </div>
+    <div>
+        <canvas id="tetrisCanvas" width="200" height="400" />
+    </div>
+    <div>
+        <canvas id="nextPieceCanvas" width="75" height="75" />
+    </div>
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -47,7 +55,9 @@
 
     <!-- build:js({app,.tmp}) scripts/main.js -->
     <script src="scripts/game.js"></script>
+    <!-- Loading entity -->
     <script src="scripts/entity.js"></script>
+    <script src="scripts/entityManager.js"></script>
     <!-- Loading components -->
     <script src="scripts/components/colorComponent.js"></script>
     <script src="scripts/components/positionComponent.js"></script>
@@ -55,6 +65,7 @@
     <script src="scripts/components/playerControlledComponent.js"></script>
     <script src="scripts/components/collisionComponent.js"></script>
     <script src="scripts/components/gravityComponent.js"></script>
+    <script src="scripts/components/placeHolderComponent.js"></script>
     <script src="scripts/assemblages/tetrominoes.js"></script>
     <!-- Loading systems -->
     <script src="scripts/systems/collisionSystem.js"></script>

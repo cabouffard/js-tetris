@@ -7,20 +7,37 @@ Game.maxFrameSkip = 10;
 Game.skipTicks = 1000 / Game.fps;
 
 Game.initialize = function() {
-  Game.$canvas = document.getElementById('tetrisCanvas');
-  Game.context = Game.$canvas.getContext('2d');
-
   Game.ECS = {};
   Game.ECS.Entities = {};
   Game.ECS.Components = {};
   Game.ECS.Assemblages = {};
   Game.ECS.Systems = [];
 
+  Game.NextPiece = {};
+  Game.NextPiece.$canvas = document.getElementById('nextPieceCanvas');
+  Game.NextPiece.context = Game.NextPiece.$canvas.getContext('2d');
+  Game.NextPiece.verticalSquares = 5;
+  Game.NextPiece.horizontalSquares = 5;
+  Game.NextPiece.width = Game.NextPiece.$canvas.width;
+  Game.NextPiece.height = Game.NextPiece.$canvas.height;
+  Game.NextPiece.unitWidth = Game.NextPiece.width / Game.NextPiece.verticalSquares;
+  Game.NextPiece.unitHeight = Game.NextPiece.height / Game.NextPiece.horizontalSquares;
+  Game.NextPiece.isSet = false;
+  Game.NextPiece.hasChanged = true;
+
+  Game.Stats = {};
+  Game.Stats.$canvas = document.getElementById('statsCanvas');
+  Game.Stats.context = Game.Stats.$canvas.getContext('2d');
+  Game.Stats.width = Game.Stats.$canvas.width;
+  Game.Stats.height = Game.Stats.$canvas.height;
+
   Game.Board = {};
+  Game.Board.$canvas = document.getElementById('tetrisCanvas');
+  Game.Board.context = Game.Board.$canvas.getContext('2d');
   Game.Board.verticalSquares = 10;
   Game.Board.horizontalSquares = 20;
-  Game.Board.width = Game.$canvas.width;
-  Game.Board.height = Game.$canvas.height;
+  Game.Board.width = Game.Board.$canvas.width;
+  Game.Board.height = Game.Board.$canvas.height;
   Game.Board.unitWidth = Game.Board.width / Game.Board.verticalSquares;
   Game.Board.unitHeight = Game.Board.height / Game.Board.horizontalSquares;
 };
@@ -42,8 +59,10 @@ Game.pause = function() {
 };
 
 Game.restart = function() {
-  // TODO: Temp way of doing this
   Game.ECS.Entities = {};
+  Game.NextPiece.isSet = false;
+  Game.NextPiece.hasChanged = true;
+
   console.log ('Game Restarted !');
 };
 
@@ -89,7 +108,4 @@ Game.run = (function() {
     window.onEachFrame = onEachFrame;
 })();
 
-
 Game.initialize();
-
-

@@ -11,13 +11,12 @@ function generateUUID(){
         return (c=='x' ? r : (r&0x3|0x8)).toString(16);
     });
     return uuid;
-};
+}
 
 Game.ECS.Entity = function Entity() {
   this.id = generateUUID();
   this.components = {};
 
-  // Game.ECS.Entity.prototype._count;
   Game.ECS.Entity.prototype._count++;
 
   return this;
@@ -47,4 +46,5 @@ Game.ECS.Entity.prototype.print = function print () {
   console.log(JSON.stringify(this, null, 2));
   return this;
 };
+
 

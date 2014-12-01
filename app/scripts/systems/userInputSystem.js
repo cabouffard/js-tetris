@@ -54,7 +54,9 @@ function keyDownHandler(event) {
   }
 }
 
-Game.$canvas.addEventListener('keydown', keyDownHandler, false);
+// Unable to bind directly to canvas due to tab index
+// This is a restriction of html5
+window.addEventListener('keydown', keyDownHandler, false);
 
 Game.ECS.Systems.userInput = function userInputSystem (entities) {
 
