@@ -9,7 +9,6 @@ function showGameOver() {
 
   var img = new Image();
   img.onload = function() {
-    console.log ('done');
     Game.Board.context.drawImage(img, 15, 120, 175, 150);
   };
   img.src = 'images/game_over.png';

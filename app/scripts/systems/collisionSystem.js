@@ -6,6 +6,15 @@ function invalidLocation(shape, position, x, y) {
   if (Game.ECS.collisionBoard[position.y + x][position.x + y + position.xVelocity]) {
     return true;
   }
+  // You are not allowed to go overboard (<- lol)
+  if (position.x + y + position.xVelocity >= Game.Board.verticalSquares) {
+    return true;
+  }
+
+  if (position.x + y + position.xVelocity < 0) {
+    return true;
+  }
+
   return false;
 }
 
