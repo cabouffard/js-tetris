@@ -3,7 +3,7 @@
 var Game = Game || {};
 
 Game.ECS.Systems = [
-  Game.ECS.Systems.randomizer,
+  // Game.ECS.Systems.randomizer,
   Game.ECS.Systems.userInput,
   Game.ECS.Systems.gravity,
   Game.ECS.Systems.collision,

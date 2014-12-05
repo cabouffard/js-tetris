@@ -22,9 +22,12 @@ Game.ECS.Systems.lineClearing = function lineClearing(entities) {
 
     }
     if (isFull) {
-      linesCleared.lines.push(y);
-      linesCleared.streak += 1;
-      Game.Stats.linesCleared += 1;
+      Game.ECS.collisionBoard.splice(y,1);
+      Game.ECS.collisionBoard.unshift([0,0,0,0,0,0,0,0,0,0]);
+      console.log ('cleared');
+      // linesCleared.lines.push(y);
+      // linesCleared.streak += 1;
+      // Game.Stats.linesCleared += 1;
     }
   }
 
@@ -32,26 +35,29 @@ Game.ECS.Systems.lineClearing = function lineClearing(entities) {
 
   // For each lines that are full, clear them
   // From the shape
-  for (var entityId in entities) {
-    entity = entities[entityId];
-    if (entity.components.collision && entity.components.position && entity.components.shape) {
-      var shape = entity.components.shape.tetromino;
-      var position = entity.components.position;
-      for (var line in linesCleared.lines) {
-        var allo = linesCleared.lines[line];
-        for (var x = 3; x >= 0; x--) {
-          for (var y = 0; y <= 3; y++) {
-            if (shape[x][y]) {
-              Game.ECS.collisionBoard[position.y + x][position.x + y] = false;
-            }
-            if (position.y + x === allo)  {
-              shape[x][y] = false;
-            }
-          }
-        }
-      }
-    }
-  }
+  // var moveDown = false
+  // for (var entityId in entities) {
+  //   entity = entities[entityId];
+  //   if (entity.components.collision && entity.components.position && entity.components.shape) {
+  //     var shape = entity.components.shape.tetromino;
+  //     var position = entity.components.position;
+  //     for (var line in linesCleared.lines) {
+  //       var allo = linesCleared.lines[line];
+  //       for (var x = 3; x >= 0; x--) {
+  //         for (var y = 0; y <= 3; y++) {
+  //           // if (shape[x][y]) {
+  //           //   Game.ECS.collisionBoard[position.y + x][position.x + y] = false;
+  //           //   Game.ECS.collisionBoard[position.y + x][position.x + y + 1] = true:;
+  //           // }
+  //           if (position.y + x === allo)  {
+  //             shape[x][y] = false;
+  //             moveDown = true;
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
 };
 
 

@@ -21,6 +21,7 @@ function keyDownHandler(event) {
       userInput.x = -1;
       break;
     // up, hard-drop
+    case 32:
     case 38:
       userInput.hardDrop = true;
       break;
@@ -32,12 +33,12 @@ function keyDownHandler(event) {
     case 40:
       userInput.y = 1;
       break;
-    // m
-    case 77:
+    // c
+    case 67:
       userInput.clockwise = true;
       break;
-    // n
-    case 78:
+    // v
+    case 86:
       userInput.counterClockwise = true;
       break;
     // p

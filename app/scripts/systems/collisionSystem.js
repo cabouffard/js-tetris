@@ -57,7 +57,7 @@ function collisionDetection(entity){
         }
         if (collides(shape, position, x, y)) {
           position.yVelocity = 0;
-          // entity.removeComponent(Game.ECS.Components.Gravity);
+          entity.removeComponent(Game.ECS.Components.Gravity);
           entity.removeComponent(Game.ECS.Components.PlayerControlled);
           addToCollisionBoard(entity.components.shape.tetromino, entity.components.position);
           return;
@@ -88,7 +88,7 @@ Game.ECS.Systems.collision = function collisionSystem(entities) {
   for (var entityId in entities) {
     entity = entities[entityId];
 
-    if (entity.components.collision && entity.components.position && entity.components.shape) {
+    if (entity.components.collision && entity.components.position && entity.components.shape && entity.components.gravity) {
           collisionDetection(entity);
         }
   }

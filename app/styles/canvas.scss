@@ -1,20 +1,20 @@
-body {
-}
-
 #statsCanvas {
-  float: left;
+  float: right;
   border: 1px solid black;
-  margin-left: 10px;
+
+  border:10px solid #2980b9;
+  background-color: rgba(108,122,137,0.2);
 }
 
 #tetrisCanvas {
-  float: left;
-  border: 1px solid black;
-  margin-left: 10px;
+  border:10px solid #2980b9;
+  background-color: rgba(190,190,190, 0.50);
 }
 
 #nextPieceCanvas {
   float: left;
   border: 1px solid black;
-  margin-left: 10px;
+
+  border:10px solid #2980b9;
+  background-color: rgba(108,122,137,0.2);
 }

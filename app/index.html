@@ -25,9 +25,15 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-        <canvas id="statsCanvas" width="125" height="400"></canvas>
-        <canvas id="tetrisCanvas" width="200" height="400" /></canvas>
-        <canvas id="nextPieceCanvas" width="75" height="75" /></canvas>
+    <div class="col-md-4">
+        <canvas id="statsCanvas" width="200" height="540"></canvas>
+    </div>
+    <div class="col-md-4 text-center">
+        <canvas id="tetrisCanvas" width="300" height="540"></canvas>
+    </div>
+    <div class="col-md-4">
+        <canvas id="nextPieceCanvas" width="75" height="75"></canvas>
+    </div>
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -77,6 +83,65 @@
     <!-- endbuild -->
 
     <script type="text/javascript">
+        // var entity = new Game.ECS.Entity(false);
+        // entity.addComponent(new Game.ECS.Components.Position(-1, 18));
+        // entity.addComponent(new Game.ECS.Components.PlayerControlled());
+        // entity.addComponent(new Game.ECS.Components.Collision());
+        // entity.addComponent(new Game.ECS.Components.Gravity());
+        //
+        // entity.addComponent(new Game.ECS.Components.Color('rgb(214, 30, 60)',
+        //                                     'rgb(241, 108, 107)',
+        //                                     'rgb(236, 42, 75)'));
+        // entity.addComponent(new Game.ECS.Components.Shape(Game.ECS.Components.Shape.prototype.tetrominoes.O));
+        // Game.ECS.Entities[entity.id] = entity;
+        // var entity = new Game.ECS.Entity(false);
+        // entity.addComponent(new Game.ECS.Components.Position(1,18));
+        // entity.addComponent(new Game.ECS.Components.PlayerControlled());
+        // entity.addComponent(new Game.ECS.Components.Collision());
+        // entity.addComponent(new Game.ECS.Components.Gravity());
+        //
+        // entity.addComponent(new Game.ECS.Components.Color('rgb(214, 30, 60)',
+        //                                     'rgb(241, 108, 107)',
+        //                                     'rgb(236, 42, 75)'));
+        // entity.addComponent(new Game.ECS.Components.Shape(Game.ECS.Components.Shape.prototype.tetrominoes.O));
+        // Game.ECS.Entities[entity.id] = entity;
+        //
+        // var entity = new Game.ECS.Entity(false);
+        // entity.addComponent(new Game.ECS.Components.Position(3,18));
+        // entity.addComponent(new Game.ECS.Components.PlayerControlled());
+        // entity.addComponent(new Game.ECS.Components.Collision());
+        // entity.addComponent(new Game.ECS.Components.Gravity());
+        //
+        // entity.addComponent(new Game.ECS.Components.Color('rgb(214, 30, 60)',
+        //                                     'rgb(241, 108, 107)',
+        //                                     'rgb(236, 42, 75)'));
+        // entity.addComponent(new Game.ECS.Components.Shape(Game.ECS.Components.Shape.prototype.tetrominoes.O));
+        // Game.ECS.Entities[entity.id] = entity;
+        //
+        // var entity = new Game.ECS.Entity(false);
+        // entity.addComponent(new Game.ECS.Components.Position(5,18));
+        // entity.addComponent(new Game.ECS.Components.PlayerControlled());
+        // entity.addComponent(new Game.ECS.Components.Collision());
+        // entity.addComponent(new Game.ECS.Components.Gravity());
+        //
+        // entity.addComponent(new Game.ECS.Components.Color('rgb(214, 30, 60)',
+        //                                     'rgb(241, 108, 107)',
+        //                                     'rgb(236, 42, 75)'));
+        // entity.addComponent(new Game.ECS.Components.Shape(Game.ECS.Components.Shape.prototype.tetrominoes.O));
+        // Game.ECS.Entities[entity.id] = entity;
+        //
+        // var entity = new Game.ECS.Entity(false);
+        // entity.addComponent(new Game.ECS.Components.Position(7,18));
+        // entity.addComponent(new Game.ECS.Components.PlayerControlled());
+        // entity.addComponent(new Game.ECS.Components.Collision());
+        // entity.addComponent(new Game.ECS.Components.Gravity());
+        //
+        // entity.addComponent(new Game.ECS.Components.Color('rgb(214, 30, 60)',
+        //                                     'rgb(241, 108, 107)',
+        //                                     'rgb(236, 42, 75)'));
+        // entity.addComponent(new Game.ECS.Components.Shape(Game.ECS.Components.Shape.prototype.tetrominoes.O));
+        // Game.ECS.Entities[entity.id] = entity;
+
         window.onEachFrame(Game.run);
     </script>
 </body>

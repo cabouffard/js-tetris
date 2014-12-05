@@ -45,17 +45,17 @@ function debugShowingCollision() {
 }
 
 function drawGrid(canvas){
-  for (var x = 0.5; x < canvas.$canvas.width; x += canvas.unitWidth) {
+  for (var x = 0; x <= canvas.$canvas.width; x += canvas.unitWidth) {
     canvas.context.moveTo(x, 0);
     canvas.context.lineTo(x, canvas.$canvas.height);
   }
 
-  for (var y = 0.5; y < canvas.$canvas.height; y += canvas.unitHeight) {
+  for (var y = 0; y <= canvas.$canvas.height; y += canvas.unitHeight) {
     canvas.context.moveTo(0, y);
     canvas.context.lineTo(canvas.$canvas.width, y);
   }
 
-  canvas.context.strokeStyle = '#ddd';
+  canvas.context.strokeStyle = 'rgba(29, 29, 29, 0.4)';
   canvas.context.stroke();
 }
 
@@ -104,7 +104,7 @@ Game.ECS.Systems.render = function renderSystem (entities) {
       renderTetromino(entity, canvas);
     }
   }
-  // debugShowingCollision();
+  debugShowingCollision();
 };
 
 
